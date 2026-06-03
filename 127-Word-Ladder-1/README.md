@@ -47,3 +47,7 @@ wordList = ["hot","dot","dog","lot","log"]
 Output: 0
 ```
 Explanation: `cog` is not in `wordList`, so no valid sequence exists.
+
+
+Time Complexity = O(N × L × 26) ≈ O(N × L)     // N-> wordList.size(), L->word.length
+Space Complexity = O(N × L)         // unordered_set = O(N*L) + queue = O(N*L)
