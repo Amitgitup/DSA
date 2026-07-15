@@ -4,21 +4,31 @@ https://leetcode.com/problems/clear-digits/
 
 ## Problem
 
-Given a string `s` consisting of lowercase letters and digits, process the string from left to right. For each digit, remove the closest preceding non-digit character (if any) and discard the digit itself.
+Given a string `s` consisting of lowercase letters and digits, process the string from left to right.
 
-Return the resulting string after all characters have been processed.
+For each digit in `s`, remove the closest preceding non-digit character (if any), then discard the digit itself.
 
-## Solution
+Return the resulting string after processing all characters.
 
-- Iterate through the input string using a stack.
-- If the current character is a digit (`0`-`9`), pop one character from the stack if it exists.
-- If the current character is a lowercase letter, push it onto the stack.
-- After processing, reconstruct the output string from the stack.
+### Example
+
+Input: `s = "ab3c"
+Output: "ac"
+
+Explanation: digit `3` removes the preceding character `b`, then `3` is discarded.
+
+## Approach
+
+- Use a stack (or string builder acting like a stack) to build the result incrementally.
+- Traverse the string one character at a time.
+- If the character is a letter, push it onto the stack.
+- If the character is a digit, pop one character from the stack if it is not empty.
+- Ignore the digit itself after applying its effect.
 
 ## Complexity
 
-- Time: `O(n)` where `n` is the length of the string.
-- Space: `O(n)` for the stack.
+- Time: `O(n)`, where `n` is the length of the string.
+- Space: `O(n)`, due to the stack used to store characters.
 
 ## Implementation
 
@@ -26,5 +36,5 @@ Return the resulting string after all characters have been processed.
 
 ## Notes
 
-- The implementation supports digits `0` through `9`.
-- If a digit appears with no preceding letter to remove, it is simply ignored.
+- Digits `0` through `9` all remove at most one preceding character.
+- If a digit appears when there is no preceding letter, the digit has no effect and is discarded.
